@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ops Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">OD</span>
+        <span>OpsDesk</span>
+      </a>
+
+      <nav class="nav-list" aria-label="Dashboard sections">
+        <a class="nav-link is-active" href="#">Overview</a>
+        <a class="nav-link" href="#">Revenue</a>
+        <a class="nav-link" href="#">Customers</a>
+        <a class="nav-link" href="#">Projects</a>
+        <a class="nav-link" href="#">Reports</a>
+      </nav>
+
+      <section class="sidebar-status" aria-label="System status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div>
+          <strong>Systems normal</strong>
+          <span>Updated just now</span>
+        </div>
+      </section>
+    </aside>
+
+    <main class="dashboard">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Executive Dashboard</p>
+          <h1>Overview</h1>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="search">
+            <span class="sr-only">Search</span>
+            <input type="search" placeholder="Search metrics" />
+          </label>
+          <button class="button secondary" type="button" id="exportButton">Export</button>
+          <button class="button primary" type="button" id="refreshButton">Refresh</button>
+        </div>
+      </header>
+
+      <section class="kpi-grid" aria-label="Key performance indicators">
+        <article class="metric-card">
+          <span class="metric-label">Revenue</span>
+          <strong class="metric-value" data-metric="revenue">$128.4K</strong>
+          <span class="metric-change positive">+12.8%</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Active users</span>
+          <strong class="metric-value" data-metric="users">24,893</strong>
+          <span class="metric-change positive">+8.2%</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Conversion</span>
+          <strong class="metric-value" data-metric="conversion">7.4%</strong>
+          <span class="metric-change negative">-1.1%</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Open tickets</span>
+          <strong class="metric-value" data-metric="tickets">312</strong>
+          <span class="metric-change neutral">Stable</span>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel chart-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Revenue trend</h2>
+              <p id="chartSubtitle">Last 7 days</p>
+            </div>
+            <div class="segmented-control" aria-label="Chart time range">
+              <button class="segment is-active" type="button" data-range="7d">7D</button>
+              <button class="segment" type="button" data-range="30d">30D</button>
+              <button class="segment" type="button" data-range="90d">90D</button>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <svg id="lineChart" viewBox="0 0 720 280" role="img" aria-label="Revenue line chart"></svg>
+          </div>
+        </article>
+
+        <article class="panel pipeline-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Pipeline</h2>
+              <p>Current quarter</p>
+            </div>
+          </div>
+          <div class="pipeline-list">
+            <div class="pipeline-item">
+              <div>
+                <strong>Prospecting</strong>
+                <span>$420K</span>
+              </div>
+              <progress value="72" max="100">72%</progress>
+            </div>
+            <div class="pipeline-item">
+              <div>
+                <strong>Negotiation</strong>
+                <span>$286K</span>
+              </div>
+              <progress value="54" max="100">54%</progress>
+            </div>
+            <div class="pipeline-item">
+              <div>
+                <strong>Committed</strong>
+                <span>$198K</span>
+              </div>
+              <progress value="38" max="100">38%</progress>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel table-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Recent activity</h2>
+              <p id="lastUpdated">Updated at --:--</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Account</th>
+                  <th>Owner</th>
+                  <th>Status</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody id="activityRows"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
